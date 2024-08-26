@@ -6,9 +6,16 @@ import plotly.express as px
 import numpy as np
 import re
 from datetime import datetime
+from PIL import Image 
 
 # Set page config
 st.set_page_config(page_title="2024 US Presidential Election Prediction Market Analysis", layout="wide")
+
+# Load the logo image
+logo = Image.open("Logo1.png")  
+
+# Display the logo in the sidebar
+st.sidebar.image(logo, use_column_width=True)
 
 # Load and preprocess the data
 @st.cache_data
@@ -58,9 +65,6 @@ df = load_data()
 poll_df = load_poll_data()
 
 st.title("2024 US Presidential Election Analysis")
-
-# Sidebar for user inputs
-st.sidebar.header("Controls")
 
 # Date range selector
 start_date, end_date = st.sidebar.date_input(
